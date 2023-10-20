@@ -15,7 +15,7 @@ class Game15(tk.Tk):
         self.shuffle_tiles()
         self.game_over_label = tk.Label(self, text="Игра окончена")
         self.game_over_label.grid(row=5, column=0, columnspan=4)
-        self.game_over_label.grid_remove()  
+        self.game_over_label.grid_remove()
 
     def create_widgets(self):
         for i in range(4):
@@ -41,7 +41,7 @@ class Game15(tk.Tk):
         random.shuffle(numbers)
         while not self.is_solvable(numbers):
             random.shuffle(numbers)
-        '''numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]'''
+        numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         for i in range(4):
             for j in range(4):
                 if i == 3 and j == 3:
@@ -76,23 +76,6 @@ class Game15(tk.Tk):
                     return False
                 current_number = (current_number + 1) % 16
         self.game_over_label.grid()
-
-    def show_game_over_message(self):
-        if self.game_over_window is None or not self.game_over_window.winfo_exists():
-            self.game_over_window = tk.Toplevel(self)
-            self.game_over_window.title("Игра окончена")
-            game_over_label = tk.Label(self.game_over_window, text="Игра окончена, начать снова?")
-            game_over_label.pack()
-            restart_button = tk.Button(self.game_over_window, text="Начать заново", command=self.restart_game)
-            restart_button.pack()
-            game_over_label.lift()
-        else:
-            game_over_label = self.game_over_window.winfo_children()[0]
-            game_over_label.config(text="Игра окончена, начать снова?")
-            restart_button = self.game_over_window.winfo_children()[1]
-            restart_button.config(command=self.restart_game)
-            game_over_label.lift()
-        self.game_over_window.deiconify()
 
     def restart_game(self):
         self.shuffle_tiles()
