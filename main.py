@@ -6,7 +6,7 @@ class Game15(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Игра 15")
-        self.geometry("300x300")
+        self.geometry("250x300")
         self.tiles = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]
         self.empty_row, self.empty_col = 3, 3
         self.game_over_window = None
@@ -41,7 +41,7 @@ class Game15(tk.Tk):
         random.shuffle(numbers)
         while not self.is_solvable(numbers):
             random.shuffle(numbers)
-        numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        '''numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]'''
         for i in range(4):
             for j in range(4):
                 if i == 3 and j == 3:
